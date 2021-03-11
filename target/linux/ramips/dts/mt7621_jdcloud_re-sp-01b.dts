@@ -70,42 +70,35 @@
 			#address-cells = <1>;
 			#size-cells = <1>;
 
-			partition@0 {
-				label = "u-boot";
-				reg = <0x0 0x30000>;
-				read-only;
-			};
+			partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
 
-			config: partition@30000 {
-				label = "config";
-				reg = <0x30000 0x10000>;
-				read-only;
-			};
+        partition@0 {
+                label = "u-boot";
+                reg = <0x0 0x30000>;
+                read-only;
+        };
 
-			factory: partition@40000 {
-				label = "factory";
-				reg = <0x40000 0x10000>;
-				read-only;
-			};
+        config: partition@30000 {
+                label = "config";
+                reg = <0x30000 0x10000>;
+                read-only;
+        };
 
-			partition@50000 {
-				compatible = "denx,uimage";
-				label = "firmware";
-				reg = <0x50000 0x1ab0000>;
-			};
+        factory: partition@40000 {
+                label = "factory";
+                reg = <0x40000 0x10000>;
+                read-only;
+        };
 
-			partition@1b00000 {
-				label = "mini";
-				reg = <0x1b00000 0x400000>;
-				read-only;
-			};
-
-			partition@1f00000 {
-				label = "oem";
-				reg = <0x1f00000 0x100000>;
-				read-only;
-			};
-		};
+        partition@50000 {
+                compatible = "denx,uimage";
+                label = "firmware";
+                reg = <0x50000 0x1fb0000>;
+        };
+};
 	};
 };
 
